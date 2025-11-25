@@ -19,7 +19,7 @@ namespace Tyuiu.PupovAA.Sprint5.Task1.V22.Lib
             string stry;
             for (int i = startValue;i <= stopValue;i++)
             {
-                y = Math.Round(Math.Sin(i)+ ((Math.Cos(i) + 1) / (2 - i))+ 2 * i);
+                y = Math.Round((Math.Sin(i)+ ((Math.Cos(i) + 1) / (2 - i))+ 2 * i),2);
                 if (Math.Abs(2 - i) < 1e-10)
                 {
                     y = 0;
