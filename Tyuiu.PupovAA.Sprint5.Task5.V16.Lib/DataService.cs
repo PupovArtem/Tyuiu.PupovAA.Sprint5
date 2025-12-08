@@ -10,18 +10,21 @@ namespace Tyuiu.PupovAA.Sprint5.Task5.V16.Lib
         {
             string strx = File.ReadAllText(path);
             string[] str = strx.Split(',');
-            double ret = 0;
+            double ret = -10;
             for (int  i = 0;  i < str.Length-1; i++)
             {
+                
                 double x = double.Parse(str[i]);
+                
                 if (x % 10 == 0)
                 {
-                    if (x > ret)
-                    {
+                    if (x > ret)                    {
                         ret= x;
                     }
+                    
                 }
-            }return ret;
+            }
+            return ret;
 
 
 
