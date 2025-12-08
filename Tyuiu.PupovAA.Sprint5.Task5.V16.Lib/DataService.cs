@@ -10,21 +10,40 @@ namespace Tyuiu.PupovAA.Sprint5.Task5.V16.Lib
         {
             string strx = File.ReadAllText(path);
             string[] str = strx.Split(',');
-            double ret = -10;
-            for (int  i = 0;  i < str.Length-1; i++)
+
+            List<double> results = new List<double>(); // Используем List вместо массива
+
+            foreach (string str2 in str)
             {
-                
-                double x = double.Parse(str[i]);
-                
-                if (x % 10 == 0)
+                if (double.TryParse(str2.Trim(), out double res))
                 {
-                    if (x > ret)                    {
-                        ret= x;
+                    // Округляем для избежания погрешности
+                    res = Math.Round(res, 3);
+
+                    // Проверяем, целое ли число и делится на 10
+                    if (Math.Abs(res % 1) < 0.000001) // целое число
+                    {
+                        int intRes = (int)Math.Round(res);
+                        if (intRes % 10 == 0)
+                        {
+                            // Исправленное условие: числа от -99 до -1 ИЛИ от 0 до 9
+                            if (res > -100 && res < 10)
+                            {
+                                results.Add(res);
+                            }
+                        }
                     }
-                    
                 }
             }
-            return ret;
+
+            if (results.Count == 0)
+            {
+                Console.WriteLine("Не найдено подходящих чисел");
+                return 0; // или выбросить исключение
+            }
+
+            return results.Max();
+
 
 
 
