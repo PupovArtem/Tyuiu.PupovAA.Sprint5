@@ -7,8 +7,12 @@ namespace Tyuiu.PupovAA.Sprint5.Task6.V11.Lib
         public int LoadFromDataFile(string path)
         {
             string str = File.ReadAllText(path);
-            str = str.Replace("?", "").Replace(",", "").Replace(".", "");
+            
             string[] str1 = str.Split(" ");
+            for (int i = 0; i < str1.Length; i++)
+            {
+                str1[i] = str1[i].Trim('?', '!', '.', ',', ';', ':', '"', '\'');
+            }
 
 
 
